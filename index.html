@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hover border</title>
+  <style>
+  body, html {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  .block {
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    background: #f5f5f5;
+    position: relative;
+  }
+  .hover-effect-border-red {
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    top: -2px;
+    bottom: -2px;
+    z-index: -1;
+    overflow: hidden;
+  }
+    .hover-effect-border-red-left:after,
+    .hover-effect-border-red-right:after,
+    .hover-effect-border-red-left:before,
+    .hover-effect-border-red-right:before {
+      content: "";
+      left: 50%;
+      right: 50%;
+      height: 2px;
+      position: absolute;
+      top: 0;
+      background-color: #b41e32;
+    }
+    .hover-effect-border-red-left:before,
+    .hover-effect-border-red-right:before {
+      top: auto;
+      bottom: 0;
+    }
+    .hover-effect-border-red-left::before {
+      right: 100%;
+      left: auto;
+      width: 50%;
+    }
+    .hover-effect-border-red-right::before {
+      left: 100%;
+      right: auto;
+      width: 50%;
+    }
+    .block:hover .hover-effect-border-red-left::after,
+    .block:hover .hover-effect-border-red-right::after {
+      height: calc(100% - 2px);
+      transition: left 0.5s, right 0.5s, height 0.5s 0.5s;
+    }
+    .block:hover .hover-effect-border-red-left::after {
+      left: 0;
+    }
+    .block:hover .hover-effect-border-red-right::after {
+      right: 0;
+    }
+    .block:hover .hover-effect-border-red-left::before,
+    .block:hover .hover-effect-border-red-right::before {
+      bottom: 0;
+      transition: all 0.5s 1s;
+    }
+    .block:hover .hover-effect-border-red-left::before {
+      right: 50%;
+    }
+    .block:hover .hover-effect-border-red-right::before {
+      left: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="block">
+    <div class="hover-effect-border-red">
+      <div class="hover-effect-border-red-left"></div>
+      <div class="hover-effect-border-red-right"></div>
+    </div>
+  </div>
+</body>
+</html>
